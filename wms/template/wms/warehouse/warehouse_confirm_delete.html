@@ -1,0 +1,16 @@
+{% extends 'wms/base.html' %}
+{% load bootstrap %}
+{% block title %}
+    仓库管理
+{% endblock %}
+{% block content %}
+    <h1 class="mt-4">确认删除仓库?</h1>
+    <div class="alert alert-warning" role="alert">
+        你确定要删除这个仓库吗？这个操作无法撤销。
+    </div>
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-danger">删除</button>
+        <a href="{% url 'warehouse_list' %}" class="btn btn-secondary">取消</a>
+    </form>
+{% endblock %}

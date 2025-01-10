@@ -1,0 +1,26 @@
+{% extends 'wms/base.html' %}
+{% load bootstrap %}
+{% block title %}
+    仓库管理
+{% endblock %}
+{% block content %}
+<div class="row">
+    <div class="col-4">
+        <h1 class="mt-4">{% if form.instance.pk %}编辑仓库{% else %}新增仓库{% endif %}</h1>
+        <form method="post">
+            {% csrf_token %}
+            <div class="mb-3">
+                <label for="id_name" class="form-label">{{ form.name.label }}</label>
+                {{ form.name|add_class:"form-control" }}
+                {% if form.name.errors %}
+                    <div class="text-danger">
+                        {{ form.name.errors }}
+                    </div>
+                {% endif %}
+            </div>
+            <button type="submit" class="btn btn-primary">保存</button>
+            <a href="{% url 'warehouse_list' %}" class="btn btn-secondary">取消</a>
+        </form>
+    </div>
+</div>
+{% endblock %}
